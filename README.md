@@ -1,0 +1,2 @@
+# MindfulPhilanthropy
+AI Strategy Dashboard
