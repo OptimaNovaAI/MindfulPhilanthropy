@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindful Philanthropy | AI Transformation Strategy</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1B2A4A;
+            --accent: #7C3AED;
+            --accent-light: #A78BFA;
+            --teal: #0EA5E9;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --surface: #FFFFFF;
+            --surface-alt: #F8FAFC;
+            --surface-dark: #0F172A;
+            --text: #1E293B;
+            --text-muted: #64748B;
+            --border: #E2E8F0;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--surface-alt); line-height: 1.6; }
+
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(15,23,42,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.08); padding: 0 2rem; }
+        .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+        .nav-logo { color: #fff; font-weight: 700; font-size: 1.1rem; letter-spacing: 0.5px; }
+        .nav-logo span { color: var(--accent-light); }
+        .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; margin-left: 2rem; font-size: 0.85rem; font-weight: 500; }
+        .nav-links a:hover { color: #fff; }
+
+        .hero { background: linear-gradient(135deg, #0F172A 0%, #1E293B 40%, #1B2A4A 100%); padding: 8rem 2rem 4rem; text-align: center; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 30% 50%, rgba(124,58,237,0.15) 0%, transparent 60%), radial-gradient(ellipse at 70% 50%, rgba(14,165,233,0.1) 0%, transparent 60%); }
+        .hero-content { position: relative; max-width: 800px; margin: 0 auto; }
+        .hero-badge { display: inline-block; background: rgba(124,58,237,0.2); border: 1px solid rgba(124,58,237,0.3); border-radius: 20px; padding: 0.35rem 1rem; color: var(--accent-light); font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; margin-bottom: 1.5rem; }
+        .hero h1 { font-family: 'DM Serif Display', serif; color: #fff; font-size: 2.8rem; line-height: 1.2; margin-bottom: 1rem; }
+        .hero h1 span { background: linear-gradient(135deg, var(--accent-light), var(--teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-subtitle { color: rgba(255,255,255,0.7); font-size: 1.1rem; line-height: 1.7; max-width: 600px; margin: 0 auto 2.5rem; }
+        .hero-meta { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+        .hero-meta-item { text-align: center; }
+        .hero-meta-label { color: rgba(255,255,255,0.4); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.25rem; }
+        .hero-meta-value { color: #fff; font-weight: 600; font-size: 0.95rem; }
+
+        .section { padding: 5rem 2rem; }
+        .section-inner { max-width: 1100px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-label { color: var(--accent); font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; }
+        .section-title { font-family: 'DM Serif Display', serif; font-size: 2rem; color: var(--primary); margin-bottom: 0.75rem; }
+        .section-subtitle { color: var(--text-muted); font-size: 1rem; max-width: 600px; margin: 0 auto; }
+
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+        .stat-card { background: #fff; border-radius: 12px; padding: 2rem; text-align: center; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .stat-card.accent { background: linear-gradient(135deg, var(--accent) 0%, var(--teal) 100%); border: none; }
+        .stat-card.accent .stat-number, .stat-card.accent .stat-label { color: #fff; }
+        .stat-number { font-family: 'DM Serif Display', serif; font-size: 2.5rem; color: var(--primary); margin-bottom: 0.25rem; }
+        .stat-label { color: var(--text-muted); font-size: 0.85rem; font-weight: 500; }
+
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        .card { background: #fff; border-radius: 12px; padding: 2rem; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .card-number { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: linear-gradient(135deg, var(--accent), var(--teal)); color: #fff; border-radius: 10px; font-weight: 700; font-size: 0.9rem; margin-bottom: 1rem; }
+        .card h3 { font-size: 1.15rem; color: var(--primary); margin-bottom: 0.75rem; }
+        .card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+        .card ul { list-style: none; margin-top: 0.75rem; }
+        .card ul li { padding: 0.4rem 0; padding-left: 1.25rem; position: relative; color: var(--text-muted); font-size: 0.85rem; }
+        .card ul li::before { content: ''; position: absolute; left: 0; top: 0.7rem; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+
+        .section-dark { background: linear-gradient(135deg, #0F172A, #1B2A4A); color: #fff; }
+        .section-dark .section-label { color: var(--accent-light); }
+        .section-dark .section-title { color: #fff; }
+        .section-dark .section-subtitle { color: rgba(255,255,255,0.6); }
+
+        .timeline { position: relative; padding-left: 3rem; }
+        .timeline::before { content: ''; position: absolute; left: 14px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--accent), var(--teal)); }
+        .timeline-item { position: relative; margin-bottom: 2.5rem; }
+        .timeline-dot { position: absolute; left: -3rem; top: 0.25rem; width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--teal)); display: flex; align-items: center; justify-content: center; }
+        .timeline-dot::after { content: ''; width: 10px; height: 10px; background: #fff; border-radius: 50%; }
+        .timeline-phase { color: var(--accent); font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.25rem; }
+        .timeline-title { font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+        .timeline-desc { color: var(--text-muted); font-size: 0.9rem; }
+
+        .cta-section { background: linear-gradient(135deg, #0F172A, #1B2A4A); padding: 5rem 2rem; text-align: center; }
+        .cta-section h2 { font-family: 'DM Serif Display', serif; color: #fff; font-size: 2.2rem; margin-bottom: 1rem; }
+        .cta-section p { color: rgba(255,255,255,0.7); font-size: 1.05rem; max-width: 500px; margin: 0 auto 2rem; }
+        .cta-btn { display: inline-block; background: linear-gradient(135deg, var(--accent), var(--teal)); color: #fff; text-decoration: none; padding: 1rem 2.5rem; border-radius: 8px; font-weight: 700; font-size: 1rem; letter-spacing: 0.5px; transition: transform 0.2s, box-shadow 0.2s; }
+        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(124,58,237,0.3); }
+
+        .footer { background: var(--surface-dark); padding: 2rem; text-align: center; }
+        .footer p { color: rgba(255,255,255,0.4); font-size: 0.8rem; }
+        .footer a { color: var(--accent-light); text-decoration: none; }
+
+        .risk-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .risk-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 1.5rem; }
+        .risk-label { font-size: 0.7rem; color: var(--warning); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.5rem; }
+        .risk-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .risk-mitigation { font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+        .risk-mitigation strong { color: var(--success); }
+
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s, transform 0.6s; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .hero-meta { gap: 1.5rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <div class="nav-logo">Optima<span>Nova</span> AI</div>
+            <div class="nav-links">
+                <a href="#strategy">Strategy</a>
+                <a href="#opportunities">Opportunities</a>
+                <a href="#landscape">Landscape</a>
+                <a href="#roadmap">Roadmap</a>
+                <a href="#cta">Next Steps</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">AI TRANSFORMATION STRATEGY</div>
+            <h1>Mindful Philanthropy <span>AI Strategy</span></h1>
+            <p class="hero-subtitle">A tailored AI transformation strategy for Mindful Philanthropy, designed to accelerate growth and operational excellence in the Nonprofit industry.</p>
+            <div class="hero-meta">
+                <div class="hero-meta-item">
+                    <div class="hero-meta-label">Prepared For</div>
+                    <div class="hero-meta-value">Alyson Niemann</div>
+                </div>
+                <div class="hero-meta-item">
+                    <div class="hero-meta-label">Prepared By</div>
+                    <div class="hero-meta-value">OptimaNova AI</div>
+                </div>
+                <div class="hero-meta-item">
+                    <div class="hero-meta-label">Date</div>
+                    <div class="hero-meta-value">February 2026</div>
+                </div>
+                <div class="hero-meta-item">
+                    <div class="hero-meta-label">AI Readiness</div>
+                    <div class="hero-meta-value">Exploring</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="strategy">
+        <div class="section-inner">
+            <div class="section-header fade-in">
+                <div class="section-label">Strategic Imperative</div>
+                <div class="section-title">Why Mindful Philanthropy Needs AI Now</div>
+                <div class="section-subtitle">Transform your philanthropic impact with AI tools designed for small nonprofits, streamlining operations while maximizing donor engagement and program effectiveness.</div>
+            </div>
+            <div class="stats-grid fade-in">
+                <div class="stat-card">
+                    <div class="stat-number">3.2x faster</div>
+                    <div class="stat-label">Grant Processing Speed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">47% increase</div>
+                    <div class="stat-label">Donor Engagement Rate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">91% automated</div>
+                    <div class="stat-label">Program Impact Tracking</div>
+                </div>
+                <div class="stat-card accent">
+                    <div class="stat-number">65% less admin</div>
+                    <div class="stat-label">Volunteer Coordination</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background:#fff;" id="opportunities">
+        <div class="section-inner">
+            <div class="section-header fade-in">
+                <div class="section-label">AI Opportunities</div>
+                <div class="section-title">Tailored Opportunities for Mindful Philanthropy</div>
+                <div class="section-subtitle">Based on your current challenges and goals, we've identified these high-impact areas.</div>
+            </div>
+            <div class="cards-grid fade-in">
+                <div class="card">
+                    <div class="card-number">1</div>
+                    <h3>Grant Writing & Fundraising Automation</h3>
+                    <p>Small philanthropic teams spend 60-70% of their time on grant applications and donor outreach. AI can automate research, draft compelling narratives, and personalize donor communications at scale, freeing your team to focus on strategic relationship building and program delivery.</p>
+                    <ul>
+                        <li>Grant database research automation using foundation matching algorithms</li>
+                        <li>AI-powered grant narrative generation with impact storytelling frameworks</li>
+                        <li>Donor segmentation and personalized email campaign automation</li>
+                        <li>Proposal timeline management and submission tracking systems</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-number">2</div>
+                    <h3>Program Impact Measurement</h3>
+                    <p>Demonstrating tangible outcomes is crucial for funding renewals and stakeholder trust. AI analytics can transform scattered program data into compelling impact narratives that resonate with funders and guide strategic decision-making.</p>
+                    <ul>
+                        <li>Automated data collection from program activities and beneficiary feedback</li>
+                        <li>Predictive analytics for program outcome forecasting</li>
+                        <li>Impact visualization dashboards for board presentations</li>
+                        <li>Beneficiary story extraction and narrative synthesis tools</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-number">3</div>
+                    <h3>Operational Workflow Optimization</h3>
+                    <p>With limited staff handling multiple responsibilities, AI can eliminate repetitive administrative tasks and create intelligent workflows that ensure nothing falls through the cracks while maintaining the personal touch donors expect.</p>
+                    <ul>
+                        <li>Volunteer scheduling and task assignment automation</li>
+                        <li>Expense tracking and budget monitoring with anomaly detection</li>
+                        <li>Meeting transcription and action item generation</li>
+                        <li>Social media content creation and posting schedules</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-number">4</div>
+                    <h3>Strategic Partnership Intelligence</h3>
+                    <p>Identifying and cultivating the right partnerships is vital for expanding reach and resources. AI can analyze potential collaborators, track relationship health, and suggest optimal engagement strategies for maximum philanthropic leverage.</p>
+                    <ul>
+                        <li>Foundation and corporate partner compatibility scoring</li>
+                        <li>Relationship mapping and engagement history tracking</li>
+                        <li>Partnership opportunity identification through sector analysis</li>
+                        <li>Collaborative funding prospect research and outreach timing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-dark" id="landscape">
+        <div class="section-inner">
+            <div class="section-header fade-in">
+                <div class="section-label">Competitive Landscape</div>
+                <div class="section-title">Where You Stand vs. AI-Enabled Competitors</div>
+                <div class="section-subtitle">Benchmarking Mindful Philanthropy against AI-adopting peers in Nonprofit.</div>
+            </div>
+            <div class="risk-grid fade-in">
+                <div class="risk-card">
+                    <div class="risk-label">Risk 01</div>
+                    <div class="risk-title">Data Privacy in Donor Management</div>
+                    <div class="risk-mitigation"><strong>Mitigation:</strong> Implement donor consent frameworks and use privacy-first AI tools with local data processing options to protect sensitive philanthropic information while maintaining compliance with fundraising regulations.</div>
+                </div>
+                <div class="risk-card">
+                    <div class="risk-label">Risk 02</div>
+                    <div class="risk-title">AI Learning Curve Overwhelming Small Team</div>
+                    <div class="risk-mitigation"><strong>Mitigation:</strong> Start with intuitive, plug-and-play solutions requiring minimal technical expertise, provide targeted training sessions, and establish a phased rollout focusing on one tool at a time with clear success metrics.</div>
+                </div>
+                <div class="risk-card">
+                    <div class="risk-label">Risk 03</div>
+                    <div class="risk-title">Technology Costs Straining Limited Budget</div>
+                    <div class="risk-mitigation"><strong>Mitigation:</strong> Prioritize nonprofit-discounted or free-tier AI tools, calculate ROI through time savings and increased grant success rates, and explore technology grants specifically for nonprofit digital transformation.</div>
+                </div>
+                <div class="risk-card">
+                    <div class="risk-label">Risk 04</div>
+                    <div class="risk-title">Loss of Personal Touch in Donor Relations</div>
+                    <div class="risk-mitigation"><strong>Mitigation:</strong> Use AI for research and preparation while maintaining human-led relationship building, implement approval workflows for AI-generated communications, and focus automation on administrative tasks rather than relationship touchpoints.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="roadmap">
+        <div class="section-inner">
+            <div class="section-header fade-in">
+                <div class="section-label">Implementation Roadmap</div>
+                <div class="section-title">Your Path to AI Transformation</div>
+                <div class="section-subtitle">A phased approach designed to deliver quick wins while building toward sustained impact.</div>
+            </div>
+            <div class="timeline fade-in">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-phase">Phase 1 — Weeks 1-2</div>
+                    <div class="timeline-title">Foundation Assessment & Quick Wins</div>
+                    <div class="timeline-desc">Audit current data systems and donor databases, select 2-3 high-impact AI tools with nonprofit pricing, and implement basic grant research automation to demonstrate immediate value and build team confidence.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-phase">Phase 2 — Weeks 3-4</div>
+                    <div class="timeline-title">Pilot Implementation & Training</div>
+                    <div class="timeline-desc">Deploy chosen AI tools with hands-on team training sessions, establish data input processes for donor and program information, and begin using AI assistance for grant applications and donor communications.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-phase">Phase 3 — Weeks 5-8</div>
+                    <div class="timeline-title">Process Integration & Measurement</div>
+                    <div class="timeline-desc">Integrate AI tools into daily workflows, develop impact measurement dashboards using program data, and create standardized processes for AI-assisted grant writing and donor outreach campaigns.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-phase">Phase 4 — Weeks 9-12</div>
+                    <div class="timeline-title">Scaling & Strategic Expansion</div>
+                    <div class="timeline-desc">Expand successful AI implementations to additional operational areas, develop board reporting on AI-driven efficiency gains and funding increases, and plan for advanced analytics capabilities as organizational capacity grows.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="cta">
+        <h2>Transform Your Philanthropic Impact in 90 Days</h2>
+        <p>Small nonprofits that implement AI strategy see 40% faster grant processing and 25% higher funding success rates within the first quarter.</p>
+        <a href="https://calendar.app.google/jZ7gEZwUswTc1neM9" target="_blank" class="cta-btn">Schedule a Strategy Session</a>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026 <a href="https://optimanova.ai">OptimaNova AI</a> &bull; Empowering organizations through intelligent AI adoption.</p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
